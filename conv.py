@@ -1,29 +1,33 @@
+import numpy as np
 
-mat1 = [[1,2,3,4,5,6],[7,8,9,10,11,12],[0,0,1,16,17,18], [0,1,0,7,23,24],[1,7,6,5,4,3]]
-kernel = [[1,1,1],[0,0,0],[2,10,3]]
-matres = [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-cont1 = 0
-cont2 = 0
+mat1 = np.array([[1,2,3,4,5,6],[7,8,9,10,11,12],[0,0,1,16,17,18], [0,1,0,7,23,24],[1,7,6,5,4,3]])
+kernel = np.array([[1,1,1],[0,0,0],[2,10,3]])
+matres = np.array([[0,0,0,0],[0,0,0,0],[0,0,0,0]])
 
 
-def convolucion(mat1, mat2, cont1, cont2):	
-	a = 0
-	b = 0
+def convolucion(mat1, mat2):	
+
 	c = 0
 
-	for i in range(0,3):
-		for j in range(0,3):
-			a = mat1[i][j]
-			b = mat2[i+cont1][j+cont2]
+	row1, col1 = mat1.shape 
 
-			c += a*b
+	for i in range(0, row1):
+		for j in range(0, col1):
+			c += mat1[i][j]*mat2[i][j]
+
 	return c
 
+def desp_convolucion(img, kernel):
 
-for i in range(0,3):
-	for j in range(0,4):
-		cont1 = i
-		cont2 = j
-		matres[i][j] = convolucion(kernel, mat1, cont1, cont2)
+	row2, col2 = matres.shape
+	row3, col3 = kernel.shape
+
+	for i in range(0, row2):
+		for j in range(0, col2):
+			matres[i][j] = convolucion(img[i: i + row3, j: j + col3], kernel)
+
+	return matres
+
+desp_convolucion (mat1, kernel)
 
 print matres
