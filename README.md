@@ -12,7 +12,8 @@ El código de padding.py es para agregar padding a una matriz.
 
 El código de padding-imagen.py es para agregar padding a una imagen.
 
-###¿Cómo ejecutar los códigos?
+### ¿Cómo ejecutar los códigos?
+
 Primero se deben de descargar los archivos, después verificar tener python y todas las librerías necesarias instaladas, posteriormente para los programas de conv.py y padding.py escribir la siguiente línea en la terminal "python nombredelarchiivo.py". Ejemplo:
 
 python conv.py
